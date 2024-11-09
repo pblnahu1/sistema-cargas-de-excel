@@ -22,5 +22,41 @@
     "name": "Monitor 4k",
     "price": 250,
     "description": "Monitor 32 pulgadas 4k"
+  },
+  {
+    "id": 5,
+    "name": "iPhone 11",
+    "price": 500,
+    "description": "iPhone 11 de 256gb"
+  },
+  {
+    "id": 6,
+    "name": "Galaxy a15",
+    "price": 350,
+    "description": "Samsung Galaxy a15 de 128gb"
+  },
+  {
+    "id": 7,
+    "name": "Monitor Samsung 4k 32\"",
+    "price": 1000,
+    "description": "Increible monitor de 32\""
+  },
+  {
+    "id": 8,
+    "name": "Cargador Inalámbrico",
+    "price": 100,
+    "description": "Para todo tipo de celular"
+  },
+  {
+    "id": 9,
+    "name": "Luces Led",
+    "price": 130,
+    "description": "Alumbrá tu hojar con increibles colores"
+  },
+  {
+    "id": 10,
+    "name": "Macbook Pro ",
+    "price": 1200,
+    "description": "Tecnología de Primera"
   }
 ]
