@@ -6,6 +6,8 @@ import axios from 'axios'
 export function ExcelUpload({onFileLoaded}) {
     const [file, setFile] = useState(null)
 
+    const URL = `${import.meta.env.VITE_BACKEND_URL}` || "http://localhost:3001"
+
     const transformExcelData = (d) => {
         const keys = d[0]
         const rows = d.slice(1)
@@ -45,7 +47,7 @@ export function ExcelUpload({onFileLoaded}) {
             onFileLoaded(transformedData)
 
             axios
-                .post("http://localhost:3001/save-json", {data:transformedData})
+                .post(`${URL}/save-json`, {data:transformedData})
                 .then((res) => {
                     console.log("Datos guardados exitosamente: ", res.data)
                 })

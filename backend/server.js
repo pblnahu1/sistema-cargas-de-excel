@@ -1,13 +1,21 @@
-const express = require("express")
-const bodyParser = require("body-parser")
-const fs = require("fs")
-const path = require("path")
-const cors = require("cors")
+
+import express from "express"
+import bodyParser from "body-parser"
+import fs from "fs"
+import { fileURLToPath } from "url"
+import path, {dirname} from "path"
+import cors from "cors"
+import { FRONTEND_URL, PORT } from "./config.js"
+
+// hago esto por el tipo (type:module)
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const app = express()
-const port = 3001
 
-app.use(cors())
+app.use(cors({
+    origin: FRONTEND_URL,
+}))
 
 app.use(bodyParser.json())
 
@@ -47,6 +55,6 @@ app.get("/products", (req,res) => {
     }
 })
 
-app.listen(port, () => {
-    console.log(`Servidor corriendo en http://localhost:${port}`)
+app.listen(PORT, () => {
+    console.log("Servidor corriendo en puerto 3001")
 })
