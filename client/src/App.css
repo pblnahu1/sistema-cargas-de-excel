@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+body {
+  background-color: rgb(43, 43, 46);
+  font-family: Arial, Helvetica, sans-serif;
+  color: beige;
+}
+
 .container-products {
   display: flex;
   flex-direction: row;
@@ -17,8 +23,23 @@
   gap: 15px;
   min-width: 100%;
   margin: 25px 0;
+  color: beige;
 }
 
+.container-file-change{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.container-file-change .input-file-change {
+  background-color: #212121;
+  color: beige;
+  border-radius: 15px;
+  padding: 10px;
+  cursor: pointer;
+}
 
 .child-products{
   border: 1px solid blueviolet;
@@ -30,3 +51,42 @@
   border-radius: 15px;
   background-color: rgb(17, 17, 31);
 }
+
+.btn-file-upload{
+  cursor: pointer;
+  padding: 15px 25px;
+  border: unset;
+  border-radius: 15px;
+  color: #e8e8e8;
+  z-index: 1;
+  background: #212121;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+}
+
+.btn-file-upload::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #e8e8e8;
+  z-index: -1;
+  
+  transition: all 250ms
+ }
+ 
+ .btn-file-upload:hover {
+  color: #212121;
+ }
+ 
+ .btn-file-upload:hover::before {
+  width: 100%;
+ }

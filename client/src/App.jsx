@@ -29,6 +29,7 @@ function App(){
   return (
     <div className="App">
       <h2 className="text-main-top">¡Sube el archivo Excel de tu negocio!</h2>
+      <br />
       <ExcelUpload onFileLoaded={handleFileLoaded} />
       <ProductList productsData={productsData} />
     </div>
