@@ -2,10 +2,11 @@
 import { useState } from "react";
 import * as XLSX from "xlsx";
 import axios from "axios";
-import "../App.css"
+import "../App.css";
 
 export function ExcelUpload({ onFileLoaded }) {
   const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const URL = `${import.meta.env.VITE_BACKEND_URL}` || "http://localhost:3001";
 
@@ -42,10 +43,21 @@ export function ExcelUpload({ onFileLoaded }) {
       const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
       const filteredData = jsonData.filter((row) => row[0] && row[1]);
-
       const transformedData = transformExcelData(filteredData);
 
       onFileLoaded(transformedData);
+
+      const blob = new Blob([JSON.stringify(transformedData, null, 2)], {
+        type: "application/json",
+      });
+      const url = URL.createObjectUrl(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "products.json";
+      link.click();
+      URL.revokeObjectUrl(url);
+
+      setLoading(true);
 
       axios
         .post(`${URL}/save-json`, { data: transformedData })
@@ -62,6 +74,9 @@ export function ExcelUpload({ onFileLoaded }) {
 
   return (
     <div className="container-file-change">
+      <div>
+        {loading ? <p>Procesando...</p> : null}
+      </div>
       <input
         type="file"
         accept=".xlsx, .xls"
